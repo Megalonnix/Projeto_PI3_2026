@@ -113,6 +113,7 @@ tabela_indice <- data.frame(
 tabela_indice <- tabela_indice[order(tabela_indice$Radical), ]
 print(tabela_indice)
 ```
+    === OUTPUT DO CÓDIGO ACIMA: ===
 
             Radical Frequencia_Docs        Documentos
     cachorr cachorr               1              doc3
