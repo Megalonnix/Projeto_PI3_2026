@@ -63,6 +63,7 @@ print(postings[["com"]])
     [1] "doc1" "doc2" "doc3"
 
 ## 3. Buscas ((AND) , (OR)):
+É realisada a busca do(s) pseudo-radical(is), verificando se ele está presente em *todos* os conjuntos de texto, ou apenas em *algum* deles.
 
 ```r
 preparar_consulta <- function(texto) {
@@ -96,6 +97,26 @@ cat("Resultado_2:", buscar_OR(consulta = "gato comeu"))       # 3 documentos pos
 ```
 
     === OUTPUT DO CÓDIGO ACIMA: ===
-    
+
     Resultado_1: doc1 doc2 
     Resultado_2: doc1 doc2 doc3
+
+## 
+
+```R
+tabela_indice <- data.frame(
+  Radical = names(postings),                                     # 1ª coluna (pseudo-radical listado)
+  Frequencia_Docs = lengths(postings),                           # 2ª coluna (quantos docs)
+  Documentos = I(sapply(postings, paste, collapse = ", "))       # 3ª coluna (d1, d2...)
+)
+
+tabela_indice <- tabela_indice[order(tabela_indice$Radical), ]
+print(tabela_indice)
+```
+
+            Radical Frequencia_Docs       Documentos
+    cachorr cachorr               1             doc3
+    carn       carn               1             doc3
+    com         com               3 doc1, doc2, doc3
+    gat         gat               2       doc1, doc2
+    peix       peix               2       doc1, doc2
