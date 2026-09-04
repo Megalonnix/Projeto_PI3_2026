@@ -114,9 +114,9 @@ tabela_indice <- tabela_indice[order(tabela_indice$Radical), ]
 print(tabela_indice)
 ```
 
-            Radical Frequencia_Docs       Documentos
-    cachorr cachorr               1             doc3
-    carn       carn               1             doc3
-    com         com               3 doc1, doc2, doc3
-    gat         gat               2       doc1, doc2
-    peix       peix               2       doc1, doc2
+            Radical Frequencia_Docs        Documentos
+    cachorr cachorr               1              doc3
+    carn       carn               1              doc3
+    com         com               3  doc1, doc2, doc3
+    gat         gat               2        doc1, doc2
+    peix       peix               2        doc1, doc2
