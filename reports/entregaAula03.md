@@ -1,7 +1,5 @@
 # **Implementação – Índice Invertido + Stemming**
 
----
-
 ## 0. Pacotes + Corpus de teste:
 
 Baixando pacote *SnowballC* para remoção de stopwords:
