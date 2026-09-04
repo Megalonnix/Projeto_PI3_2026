@@ -1,8 +1,8 @@
-## **Implementação – Índice Invertido + Stemming**
+# **Implementação – Índice Invertido + Stemming**
 
 ---
 
-### 0. Pacotes + Corpus de teste:
+## 0. Pacotes + Corpus de teste:
 
 Baixando pacote *SnowballC* para remoção de stopwords:
 
@@ -19,7 +19,7 @@ docs <- c(
 )
 ```
 
-### 1. Tokenização do texto + remoção de **stopwords**:
+## 1. Tokenização do texto + remoção de **stopwords**:
 
 ```r
 processar_texto <- function(txt) {
@@ -39,7 +39,7 @@ processar_texto <- function(txt) {
 }
 ```
 
-### Código Índice Invertido + Resultados:
+## Código Índice Invertido + Resultados:
 
 ```r
 postings <- list()
