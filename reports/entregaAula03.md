@@ -1,4 +1,4 @@
-# **Implementação – Índice Invertido + Stemming**
+# **Tarefa Aula 03: Implementação – Índice Invertido + Stemming**
 
 ## 0. Pacotes + Corpus de teste:
 
@@ -37,7 +37,7 @@ processar_texto <- function(txt) {
 }
 ```
 
-## Código Índice Invertido + Resultados:
+## 2. Código Índice Invertido + Resultados:
 
 ```r
 postings <- list()
@@ -56,8 +56,46 @@ print(postings[["peix"]])   # o PSEUDO-RADICAL "document" aparece.
 print(postings[["com"]])
 ```
 
-    === OUTPUT DO CÓDIGO: ===
+    === OUTPUT DO CÓDIGO ACIMA: ===
 
     [1] "doc1" "doc2"
     [1] "doc1" "doc2"
     [1] "doc1" "doc2" "doc3"
+
+## 3. Buscas ((AND) , (OR)):
+
+```r
+preparar_consulta <- function(texto) {
+  processar_texto(texto)
+}
+
+buscar_AND <- function(consulta, indice = postings) {
+  termos <- preparar_consulta(consulta)
+  if (length(termos) == 0) return(character(0))
+  
+  listas <- indice[termos]
+  listas <- listas[!sapply(listas, is.null)]
+  if (length(listas) == 0) return(character(0))
+  Reduce(intersect, listas)
+}
+
+buscar_OR <- function(consulta, indice = postings) {
+  termos <- preparar_consulta(consulta)
+  if (length(termos) == 0) return(character(0))
+  
+  listas <- indice[termos]
+  listas <- listas[!sapply(listas, is.null)]
+  if (length(listas) == 0) return(character(0))
+  Reduce(union, listas)
+}
+```
+
+```r
+cat("Resultado_1:", buscar_AND(consulta = "peixe gato"),"\n") # 2 dos docs. possuem AMBOS os pseudo-radicais.
+cat("Resultado_2:", buscar_OR(consulta = "gato comeu"))       # 3 documentos possuem ALGUM dos 2 pseudo-radicais.
+```
+
+    === OUTPUT DO CÓDIGO ACIMA: ===
+    
+    Resultado_1: doc1 doc2 
+    Resultado_2: doc1 doc2 doc3
